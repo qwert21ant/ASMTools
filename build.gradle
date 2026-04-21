@@ -1,0 +1,40 @@
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+group = 'ru.qwert21.tools'
+version = '0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.ow2.asm:asm-debug-all:5.1'
+    implementation 'com.google.guava:guava:19.0'
+}
+
+publishing {
+    publications {
+        myPub(MavenPublication) {
+            from components.java
+        }
+    }
+
+    repositories {
+        mavenLocal()
+    }
+}
+
+// tasks.register('run', JavaExec) {
+//     group 'run'
+
+//     classpath sourceSets.main.runtimeClasspath
+
+//     main "${project.group}.asm.Main"
+
+//     args([
+//         'D:\\Projects\\test-proj\\build\\libs\\test-proj-cleared.jar',
+//         'D:\\Projects\\test-proj\\build\\libs\\test-proj-sig.jar',
+//         project.file('test.sig')
+//     ])
+// }
