@@ -20,7 +20,9 @@ jobs:
           distribution: 'temurin'
 
       - name: Publish to GitHub Packages
-        run: ./gradlew publishMyPubPublicationToGitHubPackagesRepository
+        run: |
+          chmod +x gradlew
+          ./gradlew publishMyPubPublicationToGitHubPackagesRepository
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_ACTOR: ${{ github.actor }}
